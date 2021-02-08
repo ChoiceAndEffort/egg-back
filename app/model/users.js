@@ -14,8 +14,9 @@ module.exports = app => {
       autoIncrement: true,
     },
     name: STRING(50),
-    sex: STRING(4),
-    age: STRING(32),
+    famous: STRING(40),
+    time: STRING(32),
+    logo: STRING(100),
   }, {
     freezeTableName: true,
     timestamps: false,
