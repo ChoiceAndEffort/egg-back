@@ -7,7 +7,12 @@ class UserController extends Controller {
   async index() {
     const { ctx } = this;
     const user = await ctx.model.Users.findAll();
-    ctx.body = user;
+    ctx.body = {
+      status: 200,
+      data: {
+        list: user,
+      },
+    };
   }
 }
 

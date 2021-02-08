@@ -8,6 +8,6 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.resources('users', '/findUsersList', controller.users);
+  router.resources('users', '/api/findUsersList', controller.users);
 
 };
