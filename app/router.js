@@ -10,5 +10,6 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/api/findUsers', controller.users.index);
   router.post('/api/addUsers', controller.users.create);
+  router.post('/api/deleteUsers', controller.users.delete);
 
 };

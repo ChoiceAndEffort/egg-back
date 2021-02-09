@@ -28,6 +28,24 @@ class UserController extends Controller {
       message: '新增数据成功',
     };
   }
+
+  // 删除
+  async delete() {
+    const { ctx } = this;
+    //     如上面例子中的 ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的。
+    // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
+    const { id } = ctx.request.body;
+    const user = await ctx.model.Users.findByPk(id);
+    if (!user) {
+      ctx.status = 404;
+      return;
+    }
+    await user.destroy();
+    ctx.body = {
+      status: 200,
+      message: '删除成功',
+    };
+  }
 }
 
 module.exports = UserController;
