@@ -8,6 +8,7 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.resources('users', '/api/findUsersList', controller.users);
+  router.get('/api/findUsers', controller.users.index);
+  router.post('/api/addUsers', controller.users.create);
 
 };
