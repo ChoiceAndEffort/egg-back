@@ -22,7 +22,13 @@ class UserController extends Controller {
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     const { name, time, famous, logo } = ctx.request.body;
     const res = await ctx.model.Users.create({ name, time, famous, logo });
-    console.log(res, 55555555);
+    if (!res) {
+      ctx.body = {
+        status: 2000,
+        message: '操作数据库失败',
+      };
+      return;
+    }
     ctx.body = {
       status: 200,
       message: '新增数据成功',
@@ -37,7 +43,10 @@ class UserController extends Controller {
     const { id } = ctx.request.body;
     const user = await ctx.model.Users.findByPk(id);
     if (!user) {
-      ctx.status = 404;
+      ctx.body = {
+        status: 2000,
+        message: '操作数据库失败',
+      };
       return;
     }
     await user.destroy();
