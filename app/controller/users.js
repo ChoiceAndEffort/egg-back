@@ -21,6 +21,14 @@ class UserController extends Controller {
     //     如上面例子中的 ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的。
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     const { name, time, famous, logo } = ctx.request.body;
+    const haveData = await ctx.model.Users.findAll({ where: { name } });
+    if (haveData && haveData.length) {
+      ctx.body = {
+        status: 20000,
+        message: '添加的数据已经存在,请勿重复添加!',
+      };
+      return;
+    }
     const res = await ctx.model.Users.create({ name, time, famous, logo });
     if (!res) {
       ctx.body = {
@@ -41,6 +49,7 @@ class UserController extends Controller {
     //     如上面例子中的 ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的。
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     const { id } = ctx.request.body;
+    // 通过主键来查询一条记录
     const user = await ctx.model.Users.findByPk(id);
     if (!user) {
       ctx.body = {
