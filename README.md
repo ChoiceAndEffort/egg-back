@@ -31,3 +31,8 @@ $ npm stop
 
 
 [egg]: https://eggjs.org
+
+
+
+### 学习使用的文档
+https://blog.csdn.net/weixin_34054931/article/details/89507733?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control

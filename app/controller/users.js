@@ -44,7 +44,7 @@ class UserController extends Controller {
     const user = await ctx.model.Users.findByPk(id);
     if (!user) {
       ctx.body = {
-        status: 2000,
+        status: 404,
         message: '操作数据库失败',
       };
       return;
@@ -55,6 +55,28 @@ class UserController extends Controller {
       message: '删除成功',
     };
   }
+
+  // 修改
+  async update() {
+    const { ctx } = this;
+    const { id } = ctx.request.body;
+    const data = Object.assign({}, ctx.request.body);
+    delete data.id;
+    const user = await ctx.model.Users.findByPk(id);
+    if (!user) {
+      ctx.body = {
+        status: 404,
+        message: '操作数据库失败',
+      };
+      return;
+    }
+    await user.update(data);
+    ctx.body = {
+      status: 200,
+      message: '修改成功',
+    };
+  }
+
 }
 
 module.exports = UserController;

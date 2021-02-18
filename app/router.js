@@ -11,5 +11,6 @@ module.exports = app => {
   router.get('/api/findUsers', controller.users.index);
   router.post('/api/addUsers', controller.users.create);
   router.post('/api/deleteUsers', controller.users.delete);
+  router.post('/api/updateUsers', controller.users.update);
 
 };
