@@ -36,3 +36,16 @@ $ npm stop
 
 ### 学习使用的文档
 https://blog.csdn.net/weixin_34054931/article/details/89507733?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+
+### 使用说明
+- 参照官网搭建框架
+- npm install --save egg-sequelize mysql2
+- 在 config/plugin.js 中引入 egg-sequelize 插件
+```js
+module.exports = {
+   sequelize: {
+      enable: true,
+      package: 'egg-sequelize'
+   }
+};
+```

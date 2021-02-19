@@ -7,11 +7,21 @@ class UserController extends Controller {
   // 查询列表
   async index() {
     const { ctx } = this;
-    const user = await ctx.model.Users.findAll();
+    // 获取get请求的数据,通过query的方式获取数据
+    const { page = 1, pageSize = 20 } = ctx.query;
+    // 查询所有
+    // const user = await ctx.model.Users.findAll();
+    // 分页查询
+    const user = await ctx.model.Users.findAndCountAll({
+      offset: parseInt((page - 1) * pageSize),
+      limit: parseInt(pageSize),
+
+    });
     ctx.body = {
       status: 200,
       data: {
-        list: user,
+        list: user.rows,
+        total: user.count,
       },
     };
   }
