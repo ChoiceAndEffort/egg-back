@@ -8,9 +8,14 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.get('/api/findUsers', controller.users.index);
-  router.post('/api/addUsers', controller.users.create);
-  router.post('/api/deleteUsers', controller.users.delete);
-  router.post('/api/updateUsers', controller.users.update);
+
+  router.get('/api/moduleOne/findConfig', controller.checked.index);
+  router.post('/api/moduleOne/updateConfig', controller.checked.update);
+
+  router.get('/api/moduleThree/findUsers', controller.users.index);
+  router.post('/api/moduleThree/addUsers', controller.users.create);
+  router.post('/api/moduleThree/deleteUsers', controller.users.delete);
+  router.post('/api/moduleThree/updateUsers', controller.users.update);
+
 
 };
