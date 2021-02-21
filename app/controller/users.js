@@ -17,8 +17,9 @@ class UserController extends Controller {
       limit: parseInt(pageSize),
 
     });
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
+      code: 200,
       data: {
         list: user.rows,
         total: user.count,
@@ -33,22 +34,20 @@ class UserController extends Controller {
     const { name, time, famous, logo } = ctx.request.body;
     const haveData = await ctx.model.Users.findAll({ where: { name } });
     if (haveData && haveData.length) {
+      ctx.status = 200;
       ctx.body = {
-        status: 20000,
+        code: 20000,
         message: '添加的数据已经存在,请勿重复添加!',
       };
       return;
     }
     const res = await ctx.model.Users.create({ name, time, famous, logo });
     if (!res) {
-      ctx.body = {
-        status: 2000,
-        message: '操作数据库失败',
-      };
+      ctx.status = 20001;// 操作数据库失败
       return;
     }
     ctx.body = {
-      status: 200,
+      code: 200,
       message: '新增数据成功',
     };
   }
@@ -69,8 +68,9 @@ class UserController extends Controller {
       return;
     }
     await user.destroy();
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
+      code: 200,
       message: '删除成功',
     };
   }
@@ -90,8 +90,9 @@ class UserController extends Controller {
       return;
     }
     await user.update(data);
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
+      code: 200,
       message: '修改成功',
     };
   }

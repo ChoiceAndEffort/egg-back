@@ -29,7 +29,7 @@ class CheckedController extends Controller {
     });
     // sequelize 循环插入数据
     const checkedData = await ctx.model.Checked.bulkCreate(data, {
-      updateOnDuplicate: [ 'label', 'checked' ], // 注意 updateOnDuplicate是在插入的时候如果主键冲突就执行更新操作
+      updateOnDuplicate: [ 'label', 'checked', 'type' ], // 注意 updateOnDuplicate是在插入的时候如果主键冲突就执行更新操作
       ignoreDuplicates: true, // 是忽略重复数据的
     });
     if (checkedData) {
