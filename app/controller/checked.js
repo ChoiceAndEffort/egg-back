@@ -8,10 +8,12 @@ class CheckedController extends Controller {
   async index() {
     const { ctx } = this;
     const list = await ctx.model.Checked.findAll();
+    const info = await ctx.model.Info.findOne();
     ctx.status = 200;
     ctx.body = {
       code: 200,
       data: list,
+      info,
     };
   }
   // 修改
