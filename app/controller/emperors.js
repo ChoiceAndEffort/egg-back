@@ -3,7 +3,7 @@
 
 const Controller = require('egg').Controller;
 
-class UserController extends Controller {
+class EmperorsController extends Controller {
   // 查询列表
   async index() {
     const { ctx } = this;
@@ -12,7 +12,7 @@ class UserController extends Controller {
     // 查询所有
     // const user = await ctx.model.Users.findAll();
     // 分页查询
-    const user = await ctx.model.Users.findAndCountAll({
+    const user = await ctx.model.Emperors.findAndCountAll({
       offset: parseInt((page - 1) * pageSize),
       limit: parseInt(pageSize),
 
@@ -32,7 +32,7 @@ class UserController extends Controller {
     //     如上面例子中的 ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的。
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     const { name, time, famous, logo } = ctx.request.body;
-    const haveData = await ctx.model.Users.findAll({ where: { name } });
+    const haveData = await ctx.model.Emperors.findAll({ where: { name } });
     if (haveData && haveData.length) {
       ctx.status = 200;
       ctx.body = {
@@ -41,7 +41,7 @@ class UserController extends Controller {
       };
       return;
     }
-    const res = await ctx.model.Users.create({ name, time, famous, logo });
+    const res = await ctx.model.Emperors.create({ name, time, famous, logo });
     if (!res) {
       ctx.status = 20001;// 操作数据库失败
       return;
@@ -59,7 +59,7 @@ class UserController extends Controller {
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     const { id } = ctx.request.body;
     // 通过主键来查询一条记录
-    const user = await ctx.model.Users.findByPk(id);
+    const user = await ctx.model.Emperors.findByPk(id);
     if (!user) {
       ctx.body = {
         status: 404,
@@ -81,7 +81,7 @@ class UserController extends Controller {
     const { id } = ctx.request.body;
     const data = Object.assign({}, ctx.request.body);
     delete data.id;
-    const user = await ctx.model.Users.findByPk(id);
+    const user = await ctx.model.Emperors.findByPk(id);
     if (!user) {
       ctx.body = {
         status: 404,
@@ -99,4 +99,4 @@ class UserController extends Controller {
 
 }
 
-module.exports = UserController;
+module.exports = EmperorsController;

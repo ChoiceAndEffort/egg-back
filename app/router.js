@@ -12,10 +12,10 @@ module.exports = app => {
   router.get('/api/moduleOne/findConfig', controller.checked.index);
   router.post('/api/moduleOne/updateConfig', controller.checked.update);
 
-  router.get('/api/moduleThree/findUsers', controller.users.index);
-  router.post('/api/moduleThree/addUsers', controller.users.create);
-  router.post('/api/moduleThree/deleteUsers', controller.users.delete);
-  router.post('/api/moduleThree/updateUsers', controller.users.update);
+  router.get('/api/moduleThree/findUsers', controller.emperors.index);
+  router.post('/api/moduleThree/addUsers', controller.emperors.create);
+  router.post('/api/moduleThree/deleteUsers', controller.emperors.delete);
+  router.post('/api/moduleThree/updateUsers', controller.emperors.update);
 
 
 };

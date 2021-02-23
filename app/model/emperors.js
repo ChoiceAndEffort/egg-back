@@ -7,7 +7,7 @@ module.exports = app => {
   } = app.Sequelize;
 
   //  users是数据库的表名
-  const Users = app.model.define('users', {
+  const Emperors = app.model.define('emperors', {
     id: {
       type: INTEGER,
       primaryKey: true, // 主键
@@ -24,5 +24,5 @@ module.exports = app => {
     timestamps: false,
   });
 
-  return Users;
+  return Emperors;
 };

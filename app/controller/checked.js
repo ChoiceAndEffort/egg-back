@@ -10,7 +10,6 @@ class CheckedController extends Controller {
     const configs = await ctx.model.Checked.findAll();// 查询tab配置
     const infomation = await ctx.model.Info.findOne();// 查询名人配置
     const imagesUrls = await ctx.model.Images.findAll();// 查询头部动画图片
-
     ctx.status = 200;
     ctx.body = {
       code: 200,
