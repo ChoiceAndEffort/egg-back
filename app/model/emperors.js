@@ -26,7 +26,7 @@ module.exports = app => {
   // 分类表关联商品表 1:n
   Emperors.associate = function() {
     app.model.Emperors.hasMany(app.model.EmperorInfo, {
-      // as: 'emperorInfo',
+      as: 'emperorInfo',
       foreignKey: 'dynasty_id', targetKey: 'id' });
   };
   return Emperors;

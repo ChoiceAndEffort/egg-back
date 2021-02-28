@@ -17,7 +17,7 @@ class EmperorsController extends Controller {
       limit: parseInt(pageSize),
       include: {
         model: ctx.model.EmperorInfo,
-        // as: 'emperorInfo',//指定表的别名
+        as: 'emperorInfo', // 指定表的别名-可以注释掉-注释掉的时候需要同步注释掉emperorInfo表和emperors表中as定义的别名
         // attributes: [ 'id', 'name' ],//可以用来指定取对应的字段
       },
       distinct: true,
