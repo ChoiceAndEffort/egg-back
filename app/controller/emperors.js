@@ -15,7 +15,12 @@ class EmperorsController extends Controller {
     const user = await ctx.model.Emperors.findAndCountAll({
       offset: parseInt((page - 1) * pageSize),
       limit: parseInt(pageSize),
-
+      include: {
+        model: ctx.model.EmperorInfo,
+        // as: 'emperorInfo',//指定表的别名
+        // attributes: [ 'id', 'name' ],//可以用来指定取对应的字段
+      },
+      distinct: true,
     });
     ctx.status = 200;
     ctx.body = {

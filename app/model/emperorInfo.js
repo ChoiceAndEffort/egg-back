@@ -7,7 +7,7 @@ module.exports = app => {
   } = app.Sequelize;
 
 
-  const emperorInfo = app.model.define('emperorInfo', {
+  const EmperorInfo = app.model.define('emperorInfo', {
     id: {
       type: BIGINT,
       primaryKey: true, // 主键
@@ -40,6 +40,12 @@ module.exports = app => {
     // timestamps默认值是true，如实是true会自动添加上 create_time 和update_time两个字段
     timestamps: false,
   });
+  // 商品表从属分类 n-1
+  EmperorInfo.associate = function() {
+    app.model.EmperorInfo.belongsTo(app.model.Emperors, {
+      // as: 'emperors',//指定别名
+      foreignKey: 'dynasty_id', targetKey: 'id' });
+  };
 
-  return emperorInfo;
+  return EmperorInfo;
 };

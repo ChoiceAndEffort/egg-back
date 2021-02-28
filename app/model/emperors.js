@@ -23,6 +23,11 @@ module.exports = app => {
     // timestamps默认值是true，如实是true会自动添加上 create_time 和update_time两个字段
     timestamps: false,
   });
-
+  // 分类表关联商品表 1:n
+  Emperors.associate = function() {
+    app.model.Emperors.hasMany(app.model.EmperorInfo, {
+      // as: 'emperorInfo',
+      foreignKey: 'dynasty_id', targetKey: 'id' });
+  };
   return Emperors;
 };
