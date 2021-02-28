@@ -10,7 +10,7 @@ class EmperorsController extends Controller {
     // 获取get请求的数据,通过query的方式获取数据
     const { page = 1, pageSize = 20 } = ctx.query;
     // 查询所有
-    // const user = await ctx.model.Users.findAll();
+    // const user = await ctx.model.Emperors.findAll();
     // 分页查询
     const user = await ctx.model.Emperors.findAndCountAll({
       offset: parseInt((page - 1) * pageSize),
@@ -36,7 +36,7 @@ class EmperorsController extends Controller {
     const { ctx } = this;
     //     如上面例子中的 ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的。
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
-    const { name, time, famous, logo } = ctx.request.body;
+    const { name, time, emperor, city } = ctx.request.body;
     const haveData = await ctx.model.Emperors.findAll({ where: { name } });
     if (haveData && haveData.length) {
       ctx.status = 200;
@@ -46,7 +46,7 @@ class EmperorsController extends Controller {
       };
       return;
     }
-    const res = await ctx.model.Emperors.create({ name, time, famous, logo });
+    const res = await ctx.model.Emperors.create({ name, time, emperor, city });
     if (!res) {
       ctx.status = 20001;// 操作数据库失败
       return;
@@ -102,6 +102,26 @@ class EmperorsController extends Controller {
     };
   }
 
+  async findOne() {
+    const { ctx } = this;
+    const { id } = ctx.query;
+    // 查询单个
+    const detail = await ctx.model.Emperors.findOne({
+      where: {
+        id,
+      },
+      include: {
+        model: ctx.model.EmperorInfo,
+        as: 'emperorInfo', // 指定表的别名-可以注释掉-注释掉的时候需要同步注释掉emperorInfo表和emperors表中as定义的别名
+        // attributes: [ 'id', 'name' ],//可以用来指定取对应的字段
+      },
+    });
+    ctx.status = 200;
+    ctx.body = {
+      code: 200,
+      data: detail,
+    };
+  }
 }
 
 module.exports = EmperorsController;

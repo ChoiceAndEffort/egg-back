@@ -14,9 +14,9 @@ module.exports = app => {
       autoIncrement: true, // 自增
     },
     name: STRING(50),
-    famous: STRING(40),
+    emperor: STRING(40),
     time: STRING(32),
-    logo: STRING(100),
+    city: STRING(100),
   }, {
     // freezeTableName默认值是 false 如果是false的话，会自动在表名后加s复数
     freezeTableName: true,

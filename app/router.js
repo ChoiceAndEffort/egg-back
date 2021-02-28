@@ -16,6 +16,7 @@ module.exports = app => {
   router.post('/api/moduleThree/addUsers', controller.emperors.create);
   router.post('/api/moduleThree/deleteUsers', controller.emperors.delete);
   router.post('/api/moduleThree/updateUsers', controller.emperors.update);
+  router.get('/api/moduleThree/detail', controller.emperors.findOne);
 
 
 };
