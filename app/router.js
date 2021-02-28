@@ -19,4 +19,7 @@ module.exports = app => {
   router.get('/api/moduleThree/detail', controller.emperors.findOne);
 
 
+  router.get('/api/moduleFour/findEmperorsInfo', controller.emperorsInfo.index);
+
+
 };
