@@ -13,6 +13,14 @@ module.exports = app => {
       primaryKey: true, // 主键
       autoIncrement: true, // 自增
     },
+    dynastyId: {
+      type: BIGINT,
+      allowNull: false,
+    },
+    emperorId: {
+      type: BIGINT,
+      allowNull: false,
+    },
     name: {
       type: STRING,
       allowNull: false,
@@ -21,7 +29,7 @@ module.exports = app => {
       type: STRING,
       allowNull: false,
     },
-    start_time: {
+    startTime: {
       type: STRING,
       allowNull: false,
     },
