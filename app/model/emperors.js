@@ -20,7 +20,7 @@ module.exports = app => {
     freezeTableName: true,
     timestamps: false,
   });
-    // 分类表关联商品表 1:n
+    // 1个朝代-对应多个皇帝 1:n
   Emperors.associate = function() {
     app.model.Emperors.hasMany(app.model.EmperorInfo, {
       as: 'emperorInfo',

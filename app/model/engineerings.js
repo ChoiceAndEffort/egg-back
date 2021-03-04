@@ -20,11 +20,12 @@ module.exports = app => {
 
     timestamps: false,
   });
+  //   多对多关联
   Engineerings.associate = function() {
     app.model.Engineerings.belongsToMany(app.model.EmperorInfo, {
       through: app.model.EmperorHasEngineering,
       foreignKey: 'engineeringsId',
-      otherKey: 'emperorId',
+
     });
   };
 

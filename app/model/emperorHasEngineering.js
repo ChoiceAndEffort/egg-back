@@ -1,25 +1,20 @@
 'use strict';
-
+// 用于多对多表查询的关联,这个表是皇帝和工程的关联表,
 module.exports = app => {
   const {
     STRING,
-    INTEGER,
+    BIGINT,
   } = app.Sequelize;
 
   const EmperorHasEngineering = app.model.define('emperor_has_engineering', {
-    // id: {
-    //   type: INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
     engineeringsName: STRING(50),
     emperorName: STRING(50),
     engineeringsId: {
-      type: INTEGER,
+      type: BIGINT,
       primaryKey: true,
     },
     emperorId: {
-      type: INTEGER,
+      type: BIGINT,
       primaryKey: true,
     },
 
