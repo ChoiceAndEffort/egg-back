@@ -20,6 +20,6 @@ module.exports = app => {
 
 
   router.get('/api/moduleFour/findEmperorsInfo', controller.emperorsInfo.index);
-  router.get('/api/moduleFour/findEngineerings', controller.engineerings.index);
+  router.get('/api/moduleFive/findEngineerings', controller.engineerings.index);
 
 };

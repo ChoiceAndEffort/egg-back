@@ -13,14 +13,11 @@ module.exports = app => {
       autoIncrement: true,
     },
     engineerName: STRING(50),
-
   }, {
-
     freezeTableName: true,
-
     timestamps: false,
   });
-  //   多对多关联
+    //   多对多关联
   Engineerings.associate = function() {
     app.model.Engineerings.belongsToMany(app.model.EmperorInfo, {
       through: app.model.EmperorHasEngineering,
