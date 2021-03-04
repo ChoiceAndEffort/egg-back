@@ -7,15 +7,21 @@ module.exports = app => {
   } = app.Sequelize;
 
   const EmperorHasEngineering = app.model.define('emperor_has_engineering', {
-    id: {
-      type: INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+    // id: {
+    //   type: INTEGER,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    // },
     engineeringsName: STRING(50),
     emperorName: STRING(50),
-    engineeringsId: INTEGER,
-    emperorId: INTEGER,
+    engineeringsId: {
+      type: INTEGER,
+      primaryKey: true,
+    },
+    emperorId: {
+      type: INTEGER,
+      primaryKey: true,
+    },
 
   }, {
     freezeTableName: true,

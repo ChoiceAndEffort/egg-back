@@ -24,6 +24,7 @@ module.exports = app => {
     app.model.Engineerings.belongsToMany(app.model.EmperorInfo, {
       through: app.model.EmperorHasEngineering,
       foreignKey: 'engineeringsId',
+      otherKey: 'emperorId',
     });
   };
 

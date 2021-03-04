@@ -10,14 +10,12 @@ class EngineeringsController extends Controller {
     // 获取get请求的数据,通过query的方式获取数据
     const { page = 1, pageSize = 20 } = ctx.query;
     // 分页查询
-    const data = await ctx.model.EmperorInfo.findAndCountAll({
+    const data = await ctx.model.Engineerings.findAndCountAll({
       offset: parseInt((page - 1) * pageSize),
       limit: parseInt(pageSize),
       include: {
-        model: ctx.model.EmperorHasEngineering,
-
+        model: ctx.model.EmperorInfo,
       },
-      distinct: true,
     });
     ctx.status = 200;
     ctx.body = {
