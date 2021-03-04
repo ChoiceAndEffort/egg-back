@@ -1,8 +1,8 @@
 'use strict';
 module.exports = app => {
   const {
-    STRING,
-    BIGINT,
+    STRING, // 将字段指定为变长字符串类型。默认长度为 255
+    BIGINT, // 整型,为数据类型指定长度时，可以像函数一样引用：INTEGER(2)
   } = app.Sequelize;
 
   const Checked = app.model.define('checked', {
